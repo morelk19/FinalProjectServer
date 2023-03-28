@@ -101,4 +101,3 @@ fetchPromise3
 
 //prints out 2.
 console.log("waiting for a response"); 
-
