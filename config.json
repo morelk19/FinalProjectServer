@@ -1,0 +1,6 @@
+{
+    "db_test": {
+      "host": "localhost",
+      "name": "blogList"
+    }
+  }
