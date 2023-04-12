@@ -1,12 +1,11 @@
 //import mongoose library
 const mongoose = require("mongoose");
-const { randomUUID } = require('crypto');
-const { v4: uuidv4, v4 } = require("uuid");
+const { v4: uuidv4 } = require("uuid");
 
 //create a blogSchema 
 const userSchema = new mongoose.Schema({
         date:   Date,
-        userId: "UUID", 
+        userId: {type: String, default: uuidv4()},
         scope: String,
 		email: String,
         password: String

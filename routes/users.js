@@ -3,13 +3,13 @@ var router = express.Router();
 const { randomUUID } = require('crypto');
 const mongoose = require("mongoose");
 var UserInfo = require("../models/UserInfo");
-const { mongooseConnect } = require("../mongoose");
 const {
   generatePasswordHash,
   validatePassword,
   generateUserToken,
   verifyToken,
 } = require("../auth");
+
 const mongoDB = process.env.ATLAS_URI;
 /* GET users listing. */
 router.get("/", function (req, res, next) {
@@ -54,8 +54,6 @@ router.post("/login", async (req, res) => {
     const user = await UserInfo.findOne({
       email: email,
     });
-    console.log(email + password);
-    console.log(user);
 
     if (!user) {
       res.json({ success: false, message: "Could not find user." }).status(204);
@@ -129,6 +127,17 @@ router.get("/message", (req, res) => {
     // Access Denied
     return res.status(401).json({ success: false, message: error });
   }
-});
+})
+
+router.get("/all", async (req, res) => {
+  try {
+    const allUsers = await UserInfo.find({});
+    res.json({users: allUsers });
+  }catch(e){
+    console.log(e);
+  }
+     
+})
+;
 
 module.exports = router;
