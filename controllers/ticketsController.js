@@ -24,7 +24,10 @@ async function createOneTicket(req, res) {
       const assignedToUserId = req.body.assignedToUserId
       const status = req.body.status
       const createdById = req.body.createdById
+      const createdAt = req.body.createdAt
+      const lastModified = req.body.lastModified
       const lastUpdatedById = req.body.lastUpdatedById
+
     
   
       //pass fields to new Blog model 
@@ -36,6 +39,8 @@ async function createOneTicket(req, res) {
           assignedToUserId,
           status,
           createdById,
+          createdAt,
+          lastModified,
           lastUpdatedById
       });
   
